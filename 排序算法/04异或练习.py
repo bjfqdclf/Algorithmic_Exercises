@@ -9,6 +9,11 @@
 
 
 def func1(arr):
+    """
+    题目1
+    :param arr:
+    :return: 出现奇数次的数
+    """
     eor = 0
     for i in arr:
         eor ^= i
@@ -16,16 +21,23 @@ def func1(arr):
 
 
 def func2(arr):
+    """
+    题目2
+    :param arr:
+    :return: 两个出现奇数次的数
+    """
     eor = 0  # r1^r2
     eor_one = 0  # 第一个结果
     for i in arr:
         eor ^= i
 
-    right_one = eor & (~eor + 1)  # 取出最右侧的1
+    right_one = eor & (~eor + 1)  # 取出最右侧的1，一个结果最右则该位有1，另一个结果最右则该位没有有1
+
     for i in arr:
         if i & right_one == 0:  # 将第一个结果与第二个结果分为两类（某一位上是1的和不是1的）
-            eor_one ^= i
-    eor_other = eor ^ eor_one
+            eor_one ^=
+
+    eor_other = eor ^ eor_one  # 取到另一个数
     return eor_one, eor_other
 
 
