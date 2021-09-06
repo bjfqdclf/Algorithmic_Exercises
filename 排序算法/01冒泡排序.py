@@ -6,8 +6,7 @@ def bubble_sort(arr):
     """
     if arr is None or len(arr) < 2:  # arr小于2长度时不排序
         return arr
-    for i in range(len(arr)-1):
-        i=len(arr)-i-1
+    for i in reversed(range(len(arr)-1)):
         for j in range(0, i):
             if arr[j] > arr[j + 1]:
                 swap(arr, j, j + 1)
