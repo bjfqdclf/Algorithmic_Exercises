@@ -1,4 +1,9 @@
 def bubble_sort(arr):
+    """
+    从头开始大的数往右边移动，最后一个数先排好
+    :param arr:
+    :return:
+    """
     if arr is None or len(arr) < 2:  # arr小于2长度时不排序
         return arr
     for i in range(len(arr)-1):
