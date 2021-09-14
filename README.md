@@ -339,3 +339,114 @@ def random_number_list(max_size, max_value):
     return arr
 ```
 
+## 1.7 递归
+
+### 1.7.1 递归的时间复杂度
+
+> 满足子问题等规模递归使用master公式：
+>        T(N)   =   a     *     T(N/b)  +    O(N^d)
+>     母问题规模  子过程调用次数   子过程规模    剩下时间复杂度
+>
+>     logb(a) < d     O(N^d)
+>     logb(a) > d     O(N^(logb(a)))
+>     logb(a) = d     O(N^d*log(N))
+
+示例：
+
+```python
+def process(arr, l, r):
+    """
+    :param arr:
+    :param l:
+    :param r:
+    :return: 最大值
+    """
+    if l == r:  # 当左右相等
+        return arr[l]
+
+    mid = l + ((r - l) >> 1)  # 得到中点
+    """
+    通过位操作除2： num >> 1
+    求中点：
+           mid = (L + R) / 2
+              => L + (R - L) / 2
+              => L + (R - L ) >> 1
+    """
+    left_max = process(arr, l, mid)
+    right_max = process(arr, mid + 1, r)
+    return max(left_max, right_max)
+
+
+if __name__ == '__main__':
+    ar = [2, 5, 4, 6, 8, 88, 7, 1, 21, 45, 66, 78]
+    max = process(ar, 0, len(ar) - 1)
+    print(max)
+```
+
+>     通过递归得到数组最大值
+>     
+>     master计算时间复杂度：
+>         T(N)=2*T(N/2)+O(1)
+>         => a = 2   b = 2   d = 0
+>         => log2(2) > 1
+>         => O(1)
+
+`通过位操作除2： num >> 1
+    求中点：
+           mid = (L + R) / 2
+              => L + (R - L) / 2
+              => L + (R - L ) >> 1`
+
+### 1.7.2 归并排序
+
+> 归并排序：
+>     左侧排序，右侧排序，整体排序
+> 时间复杂度：
+>        T(N)=2*T(N/2)+O(N)
+>     => a = 2   b = 2   d = 1
+>     =>O(N*logN)
+
+```python
+def process(arr, l, r):
+    if l == r:  # 当左右相等
+        return
+
+    mid = l + ((r - l) >> 1)  # 得到中点
+
+    process(arr, l, mid)
+    process(arr, mid + 1, r)
+    merge(arr, l, mid, r)
+
+
+def merge(arr, l, m, r):
+    help = []  # 辅助空间:r-l+1个数的空间
+    # i = 0  # help的下标指针
+    p1 = l
+    p2 = m + 1
+
+    while p1 <= m and p2 <= r:  # 都不越界时，谁小拷贝到help里
+        if arr[p1] <= arr[p2]:
+            help.append(arr[p1])
+            p1 += 1
+        else:
+            help.append(arr[p2])
+            p2 += 1
+
+    # 剩下的全拷进help
+    while p1 <= m:
+        help.append(arr[p1])
+        p1 += 1
+    while p2 <= r:
+        help.append(arr[p2])
+        p2 += 1
+
+    for i in range(len(help)):
+        arr[l + i] = help[i]
+
+
+if __name__ == '__main__':
+    ar = [2, 5, 4, 6, 8, 88, 7, 1, 21, 45, 66, 78]
+    process(ar, 0, len(ar) - 1)
+    print(ar)
+```
+
