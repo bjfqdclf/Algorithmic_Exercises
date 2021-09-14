@@ -31,4 +31,4 @@ def random_number_list(max_size, max_value):
 
 
 if __name__ == '__main__':
-    print(random_number_list(5, 55))
+    print(random_number_list(50, 55))
