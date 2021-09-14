@@ -343,13 +343,13 @@ def random_number_list(max_size, max_value):
 
 ### 1.7.1 递归的时间复杂度
 
-> 满足子问题等规模递归使用master公式：
->        T(N)   =   a     *     T(N/b)  +    O(N^d)
->     母问题规模  子过程调用次数   子过程规模    剩下时间复杂度
+> 满足子问题等规模递归使用master公式：<br>
+>        T(N)   =   a     *     T(N/b)  +    O(N^d)<br>
+>     母问题规模  子过程调用次数   子过程规模    剩下时间复杂度<br>
 >
->     logb(a) < d     O(N^d)
->     logb(a) > d     O(N^(logb(a)))
->     logb(a) = d     O(N^d*log(N))
+>     logb(a) < d     O(N^d)<br>
+>     logb(a) > d     O(N^(logb(a)))<br>
+>     logb(a) = d     O(N^d*log(N))<br>
 
 示例：
 
@@ -391,20 +391,20 @@ if __name__ == '__main__':
 >         => log2(2) > 1
 >         => O(1)
 
-`通过位操作除2： num >> 1
-    求中点：
-           mid = (L + R) / 2
-              => L + (R - L) / 2
-              => L + (R - L ) >> 1`
+`通过位操作除2： num >> 1<br>
+    求中点：<br>
+           mid = (L + R) / 2<br>
+              => L + (R - L) / 2<br>
+              => L + (R - L ) >> 1<br>`
 
 ### 1.7.2 归并排序
 
-> 归并排序：
->     左侧排序，右侧排序，整体排序
-> 时间复杂度：
->        T(N)=2*T(N/2)+O(N)
->     => a = 2   b = 2   d = 1
->     =>O(N*logN)
+> 归并排序：<br>
+>     左侧排序，右侧排序，整体排序<br>
+> 时间复杂度：<br>
+>        T(N)=2*T(N/2)+O(N)<br>
+>     => a = 2   b = 2   d = 1<br>
+>     =>O(N*logN)<br>
 
 ```python
 def process(arr, l, r):
