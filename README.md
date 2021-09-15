@@ -391,11 +391,11 @@ if __name__ == '__main__':
 >         => log2(2) > 1
 >         => O(1)
 
-`通过位操作除2： num >> 1<br>
-    求中点：<br>
-           mid = (L + R) / 2<br>
-              => L + (R - L) / 2<br>
-              => L + (R - L ) >> 1<br>`
+`通过位操作除2： num >> 1`
+    `求中点：`
+           `mid = (L + R) / 2`
+             ` => L + (R - L) / 2`
+             ` => L + (R - L ) >> 1`
 
 ### 1.7.2 归并排序
 
@@ -450,3 +450,4 @@ if __name__ == '__main__':
     print(ar)
 ```
 
+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
